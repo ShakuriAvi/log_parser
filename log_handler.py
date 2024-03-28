@@ -1,10 +1,11 @@
 from datetime import datetime, timedelta
+from typing import Dict
 
 DAYS_AGO = 7
 
 
 class LogHandler:
-    def __init__(self, log):
+    def __init__(self, log: Dict[str,str]):
         """
         Initializes the LogHandler object with the given log entry.
 
@@ -40,7 +41,7 @@ class LogHandler:
 
         return self.is_few_days_ago(timestamp) and self.check_user(user_id) and self.status_code_error(status_code)
 
-    def check_user(self, user_id):
+    def check_user(self, user_id: str) -> bool:
         """
         Checks if the user ID meets a certain condition.
 
@@ -52,7 +53,7 @@ class LogHandler:
         """
         return int(user_id) % 2 == 0
 
-    def status_code_error(self, status_code):
+    def status_code_error(self, status_code: str) -> bool:
         """
         Checks if the status code indicates an error.
 
@@ -64,7 +65,7 @@ class LogHandler:
         """
         return int(status_code) >= 400
 
-    def is_few_days_ago(self, date_string):
+    def is_few_days_ago(self, date_string: str) -> bool:
         """
         Checks if the date is within the specified number of days ago.
 
@@ -79,7 +80,7 @@ class LogHandler:
         one_week_ago = current_date - timedelta(days=DAYS_AGO)
         return converted_date < one_week_ago
 
-    def __info(self, item):
+    def __info(self, item: Dict[str,str]):
         """
         Prints the given item (log entry).
 

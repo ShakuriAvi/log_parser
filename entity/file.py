@@ -6,7 +6,7 @@ class FileReadingStrategy:
     Abstract base class for file reading strategies.
     Subclasses must implement the read_file method.
     """
-    def read_file(self, file_path):
+    def read_file(self, file_path: str):
         """
         Abstract method to read a file.
         """
@@ -16,7 +16,7 @@ class TextFileReadingStrategy(FileReadingStrategy):
     """
     Strategy for reading text files.
     """
-    def read_file(self, file_path):
+    def read_file(self, file_path: str):
         """
         Reads a text file and returns its contents as a list of dictionaries.
         """
@@ -34,7 +34,7 @@ class JSONFileReadingStrategy(FileReadingStrategy):
     """
     Strategy for reading JSON files.
     """
-    def read_file(self, file_path):
+    def read_file(self, file_path: str):
         """
         Reads a JSON file and returns its contents as a list of dictionaries.
         """
@@ -45,7 +45,7 @@ class CSVFileReadingStrategy(FileReadingStrategy):
     """
     Strategy for reading CSV files.
     """
-    def read_file(self, file_path):
+    def read_file(self, file_path: str):
         """
         Reads a CSV file and returns its contents as a list of dictionaries.
         """
@@ -67,19 +67,19 @@ class FileReader:
     """
     Class responsible for reading files based on their type.
     """
-    def __init__(self, file_type):
+    def __init__(self, file_type: str):
         """
         Initializes the FileReader object with the specified file type.
         """
         self.reading_strategy = self.__init_file_entity(file_type)()
 
-    def __init_file_entity(self, file_type):
+    def __init_file_entity(self, file_type: str):
         """
         Initializes the appropriate reading strategy based on the file type.
         """
         return FILE_ENTITY[file_type]
 
-    def read(self, file_path):
+    def read(self, file_path: str):
         """
         Reads a file using the corresponding reading strategy.
         """

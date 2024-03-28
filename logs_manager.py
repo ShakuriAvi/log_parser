@@ -14,7 +14,7 @@ class LogsManager:
         """
         self.files_manager = FilesManager()
 
-    def process_log(self, log):
+    def process_log(self, log: str):
         """
         Processes an individual log using LogHandler.
 

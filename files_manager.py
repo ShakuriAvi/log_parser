@@ -1,7 +1,6 @@
 import os
 from file_handler import FileHandler
-from concurrent.futures import ThreadPoolExecutor
-from log_handler import LogHandler
+
 
 import multiprocessing
 
@@ -39,7 +38,7 @@ class FilesManager:
         for log in logs_file:
             yield log
 
-    def file_process(self, file_name):
+    def file_process(self, file_name: str):
         """
         Processes an individual file to extract logs.
 
